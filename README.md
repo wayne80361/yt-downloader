@@ -1,2 +1,2 @@
-Personal Use Only
+Personal Use Only,
 Not for Commercial Use
