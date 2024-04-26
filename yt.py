@@ -19,7 +19,7 @@ def startDownload():
         finishLabel.configure(text="")
         video_stream.download(filename="video.mp4")
         audio.download(filename="audio.mp4")
-        finishLabel.configure(text="Downloaded")
+        finishLabel.configure(text="Download Completed")
     except:
         finishLabel.configure(text="Invalid Link", text_color="red")
 
@@ -41,8 +41,9 @@ def combineVideoAudio():
         audio_clip = AudioFileClip("audio.mp4")
         final_clip = video_clip.set_audio(audio_clip)
         final_clip.write_videofile("combined" + ".mp4")
+        finishCombineLabel.configure(text="Combining Completed", text_color="red")
     except:
-        finishCombineLabel.configure(text="error combining clips", text_color="red")
+        finishCombineLabel.configure(text="Error Combining Clips", text_color="red")
 
 # Basic GUI
 customtkinter.set_appearance_mode("System")
