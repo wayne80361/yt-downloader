@@ -34,6 +34,15 @@ def on_progress(stream, chunk, bytes_remaining):
     # update progress bar
     progressBar.set(float(percentage_of_compeletion) / 100)
 
+def combineVideoAudio():
+    try:
+        # combine the video clip with the audio clip
+        video_clip = VideoFileClip("video.mp4")
+        audio_clip = AudioFileClip("audio.mp4")
+        final_clip = video_clip.set_audio(audio_clip)
+        final_clip.write_videofile("combined" + ".mp4")
+    except:
+        finishCombineLabel.configure(text="error combining clips", text_color="red")
 
 # Basic GUI
 customtkinter.set_appearance_mode("System")
@@ -72,6 +81,10 @@ download.pack(padx=10, pady=10)
 # Combine Button
 combine = customtkinter.CTkButton(app, text="Combine", command=combineVideoAudio)
 combine.pack(padx=10, pady=10)
+
+# Finished Combining
+finishCombineLabel = customtkinter.CTkLabel(app, text="")
+finishCombineLabel.pack()
 
 # Run App
 app.mainloop()
