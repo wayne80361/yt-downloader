@@ -6,7 +6,7 @@ from moviepy.editor import *
 def startDownload(): 
     try: 
         ytLink = link.get()
-        ytObject = YouTube(ytLink)
+        ytObject = YouTube(ytLink, on_progress_callback=on_progress)
         video_stream = ytObject.streams.filter(file_extension='mp4', only_video=True, resolution='2160p').first()
         if not video_stream:
             video_stream = ytObject.streams.filter(file_extension='mp4', only_video=True, resolution='1440p').first()
@@ -22,6 +22,18 @@ def startDownload():
         finishLabel.configure(text="Downloaded")
     except:
         finishLabel.configure(text="Invalid Link", text_color="red")
+
+def on_progress(stream, chunk, bytes_remaining):
+    total_size = stream.filesize
+    byte_downloaded = total_size - bytes_remaining
+    percentage_of_compeletion = byte_downloaded / total_size * 100
+    per = str(int(percentage_of_compeletion))
+    progress.configure(text=per + '%')
+    progress.update()
+    
+    # update progress bar
+    progressBar.set(float(percentage_of_compeletion) / 100)
+
 
 # Basic GUI
 customtkinter.set_appearance_mode("System")
