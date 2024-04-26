@@ -30,7 +30,7 @@ def on_progress(stream, chunk, bytes_remaining):
     per = str(int(percentage_of_compeletion))
     progress.configure(text=per + '%')
     progress.update()
-    
+
     # update progress bar
     progressBar.set(float(percentage_of_compeletion) / 100)
 
@@ -68,6 +68,10 @@ progressBar.pack(padx=10, pady=10)
 # Download Button
 download = customtkinter.CTkButton(app, text="Download", command=startDownload)
 download.pack(padx=10, pady=10)
+
+# Combine Button
+combine = customtkinter.CTkButton(app, text="Combine", command=combineVideoAudio)
+combine.pack(padx=10, pady=10)
 
 # Run App
 app.mainloop()
