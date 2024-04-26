@@ -45,6 +45,14 @@ link.pack()
 finishLabel = customtkinter.CTkLabel(app, text="")
 finishLabel.pack()
 
+# Progress percentage
+progress = customtkinter.CTkLabel(app, text="0%")
+progress.pack()
+
+progressBar = customtkinter.CTkProgressBar(app, width=400)
+progressBar.set(0)
+progressBar.pack(padx=10, pady=10)
+
 # Download Button
 download = customtkinter.CTkButton(app, text="Download", command=startDownload)
 download.pack(padx=10, pady=10)
